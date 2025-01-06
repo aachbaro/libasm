@@ -21,7 +21,7 @@ ft_strdup:
 error:
 	neg		rax			; turn rax to positive number
 	mov		rdi, rax		; put rax in rdi
-	call		__errno_location	; get a pointer on errno
+	call		__errno_location	wrt ..plt; get a pointer on errno
 	mov		[rax], rdi		; put the returned error in errno
 	mov		rax, -1			; set the return value to -1
 	ret					; return rax

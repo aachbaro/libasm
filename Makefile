@@ -1,7 +1,7 @@
 CC = gcc
 NASM = nasm
 AR = ar
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -fPIE
 ASFLAGS = -f elf64
 
 NAME = libasm.a
