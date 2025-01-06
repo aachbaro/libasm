@@ -1,7 +1,5 @@
-CC = gcc
 NASM = nasm
 AR = ar
-CFLAGS = -Wall -Wextra -Werror -fPIE
 ASFLAGS = -f elf64
 
 NAME = libasm.a
@@ -22,12 +20,17 @@ $(NAME): $(OBJS)
 	$(NASM) $(ASFLAGS) $< -o $@
 
 test: all
-	gcc -g -o test main.c -L. -lasm
+	@if [ -f main.c ]; then \
+		clang -g -o test main.c -L. -lasm; \
+	else \
+		echo "main.c does not exist"; \
+		exit 0; \
+	fi
 
 clean:
 	rm -f $(OBJS)
 
 fclean: clean
-	rm -f $(NAME) test
+	rm -f $(NAME) test test_write.txt
 
 re: fclean all

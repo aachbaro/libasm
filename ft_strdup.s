@@ -4,7 +4,6 @@ extern malloc
 extern ft_strcpy
 extern __errno_location
 
-section .text
 ft_strdup:
 	call ft_strlen			; put the length of the string in rax
 	inc rax					; let the space for the \0
@@ -19,10 +18,10 @@ ft_strdup:
 	ret						; return rax (ptr)
 
 error:
-	neg		rax			; turn rax to positive number
-	mov		rdi, rax		; put rax in rdi
-	call		__errno_location	wrt ..plt; get a pointer on errno
-	mov		[rax], rdi		; put the returned error in errno
-	mov		rax, -1			; set the return value to -1
-	ret					; return rax
+	neg		rax						; turn rax to positive number
+	mov		rdi, rax				; put rax in rdi
+	call		__errno_location	; get a pointer on errno
+	mov		[rax], rdi				; put the returned error in errno
+	mov		rax, -1					; set the return value to -1
+	ret								; return rax
 

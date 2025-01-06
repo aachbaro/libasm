@@ -1,10 +1,8 @@
-bits 64
-
 global ft_strcpy
 
 ft_strcpy:
     mov rcx, 0                      ; initialise rax a 0
-    ; jmp loop                        ; lance la section loop
+    ; jmp loop                      ; lance la section loop
 
     loop:
         mov al, BYTE [rsi + rcx]    ; copie le caractere de la variable source dans al
